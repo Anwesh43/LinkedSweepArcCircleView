@@ -192,4 +192,26 @@ class SweepArcCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SweepArcCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val sac : SweepArcCircle = SweepArcCircle(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            sac.draw(canvas, paint)
+            animator.animate {
+                sac.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sac.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
