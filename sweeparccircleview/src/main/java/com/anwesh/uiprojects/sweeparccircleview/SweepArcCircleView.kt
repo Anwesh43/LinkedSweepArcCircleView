@@ -15,8 +15,8 @@ import android.graphics.Color
 
 val nodes : Int = 5
 val parts : Int = 2
-val scGap : Float = 0.01f
-val delay : Long = 20
+val scGap : Float = 0.02f
+val delay : Long = 10
 val strokeFactor : Int = 90
 val sizeFactor : Float = 2.9f
 val rFactor : Float = 2.8f
@@ -38,7 +38,7 @@ fun Canvas.drawSweepArcCircle(i : Int, sc : Float, size : Float, paint : Paint) 
     drawCircle(0f, -size, r, paint)
     restore()
     paint.style = Paint.Style.STROKE
-    drawArc(RectF(-r, -r, r, r), 270f, deg, false, paint)
+    drawArc(RectF(-size,  -size, size, size), 270f, deg, false, paint)
     restore()
 }
 
@@ -221,7 +221,7 @@ class SweepArcCircleView(ctx : Context) : View(ctx) {
         fun create(activity : Activity) : SweepArcCircleView {
             val view : SweepArcCircleView = SweepArcCircleView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
 }
