@@ -215,4 +215,13 @@ class SweepArcCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : SweepArcCircleView {
+            val view : SweepArcCircleView = SweepArcCircleView(activity)
+            activity.setContentView(view)
+            return view 
+        }
+    }
 }
